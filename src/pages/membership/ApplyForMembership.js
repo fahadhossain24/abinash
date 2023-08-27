@@ -1,252 +1,54 @@
-import React from 'react';
-import HeaderSlider from '../shaired-components/HeaderSlider';
+import React, { useState } from 'react';
 import Footer from '../shaired-components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import Header from '../shaired-components/Header';
+import PersonalInformation from './PersonalInformation';
+import JobDescription from './JobDescription';
+import Address from './Address';
+import OthersInfo from './OthersInfo';
+import NomineeInformation from './NomineeInformation';
 
 
 const ApplyForMembership = () => {
+    const [step, setStep] = useState(1);
+
+    const handleNext = () => {
+        setStep(step + 1);
+    }
+
+
     const handleMemberApplyForm = (e) => {
         e.preventDefault();
     }
     return (
         <div>
-            <HeaderSlider></HeaderSlider>
-            <div className='w-[540px] lg:w-[1300px] mx-auto'>
-                <h2 className='Service-headline mb-[30px] text-center'>Member Apply Form</h2>
+            <Header></Header>
+            <div className='w-[540px] lg:w-[1300px] lg:h-[690px] mx-auto'>
+                {/* Multi-step form controller on top */}
+                <div className='font-semibold lg:ml-[50px]'>
+                    <span>Membership Apply&gt;</span>
+                    {step === 1 && <span className='text-secondary'>Personal Information</span>}
+
+                    {step === 2 && <><span onClick={() => setStep(1)} className='cursor-pointer'>Personal Information&gt;</span><span className='text-secondary'>Job description</span></>}
+
+                    {step === 3 && <><span onClick={() => setStep(1)} className='cursor-pointer'>Personal Information&gt;</span><span onClick={() => setStep(2)} className='cursor-pointer'>Job description&gt;</span><span className='text-secondary'>Address</span></>}
+
+                    {step === 4 && <><span onClick={() => setStep(1)} className='cursor-pointer'>Personal Information&gt;</span><span onClick={() => setStep(2)} className='cursor-pointer'>Job description&gt;</span><span onClick={() => setStep(3)} className='cursor-pointer'>Address&gt;</span><span className='text-secondary'>Others</span></>}
+
+                    {step === 5 && <><span onClick={() => setStep(1)} className='cursor-pointer'>Personal Information&gt;</span><span onClick={() => setStep(2)} className='cursor-pointer'>Job description&gt;</span><span onClick={() => setStep(3)} className='cursor-pointer'>Address&gt;</span><span onClick={() => setStep(4)} className='cursor-pointer'>Others&gt;</span><span className='text-secondary'>Nominee Information</span></>}
+                </div>
+
+                <h2 className='Service-headline mb-[30px] text-center text-2xl bg-gradient-to-br text-transparent bg-clip-text from-blue-950 via-blue-900 to-blue-300'>Member Apply Form</h2>
                 <form onSubmit={handleMemberApplyForm}>
-                    <div className='mb-3 grid gap-2 grid-cols-1 lg:grid-cols-3'>
-                        <div>
-                            <label className='text-black font-bold text-sm mr-8'>Member ID no:</label>
-                            <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                        </div>
-                        <div>
-                            <label className='text-black font-bold text-sm mr-8'>Application Date:</label>
-                            <input type='Date' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                        </div>
-                        <div>
-                            <label className='text-black font-bold text-sm mr-8'>Applicant Photo:</label>
-                            <label className='bg-secondary text-white py-2 px-4 cursor-pointer'>Upload <FontAwesomeIcon icon={faUpload} /><input type="file" id="myfile" name="myfile" className='hidden' required />
-                            </label>
-                        </div>
-                    </div>
-                    <div>
-                        <label className='text-black font-bold text-sm bg-[#adcdea] px-2 pr-[40px] rounded-2xl'>Personal Information</label><br />
-                        <div className='grid grid-cols-2 lg:grid-cols-5 ml-2 lg:ml-0'>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Name</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Name (Bangali)</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Father's Name</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />                        </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Mother's Name</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>DOB</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>NID no</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Mobile no</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Meritial Status</label><br />
-                                <input type="radio" id="merried" name="meritial-status" value="merried" />
-                                <label for="merried" className='ml-2 mr-6'>Merried</label>
-                                <input type="radio" id="unMerried" name="meritial-status" value="unmerried" />
-                                <label for="unMerried" className='ml-2'>Unmerried</label>
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>NID copy</label><br />
-                                <input type="file" id="myfile" name="myfile" required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Application Signeture</label><br />
-                                <input type="file" id="myfile" name="myfile" required />
-                            </div>
-
-                        </div>
-                    </div>
-                    {/* job description  */}
-                    <div>
-                        <label className='text-black font-bold text-sm bg-[#adcdea] px-2 pr-[40px] rounded-2xl'>Job Destription</label><br />
-                        <div className='grid grid-cols-2 lg:grid-cols-5 ml-2 lg:ml-0'>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Name of Designation</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Hospital/Organization Name</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Duty Ward Name</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />                        </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Familiar Colleagues <span className='text-secondary font-bold'>01</span>-Name</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Familiar Colleagues <span className='text-secondary font-bold'>01</span>-Number</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Familiar Colleagues <span className='text-secondary font-bold'>02</span>-Name</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Familiar Colleagues <span className='text-secondary font-bold'>02</span>-Number</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Familiar Colleagues <span className='text-secondary font-bold'>03</span>-Name</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Familiar Colleagues <span className='text-secondary font-bold'>03</span>-Number</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                        </div>
-                    </div>
-                    {/* present Address */}
-                    <div>
-                        <label className='text-black font-bold text-sm bg-[#adcdea] px-2 pr-[40px] rounded-2xl'>Present Address</label><br />
-                        <div className='grid grid-cols-2 lg:grid-cols-5 ml-2 lg:ml-0'>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Village/House NO</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Post office/Road No</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Union/Ward</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />                        </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Thana/Upazila</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>District</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                        </div>
-                    </div>
-                    {/* permanent address */}
-                    <div>
-                        <label className='text-black font-bold text-sm bg-[#adcdea] px-2 pr-[40px] rounded-2xl'>Permanent Address</label><br />
-                        <div className='grid grid-cols-2 lg:grid-cols-5 ml-2 lg:ml-0'>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Village/House NO</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Post office/Road No</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Union/Ward</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />                        </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Thana/Upazila</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>District</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                        </div>
-                    </div>
-                    {/* familly information */}
-                    <div>
-                        <label className='text-black font-bold text-sm bg-[#adcdea] px-2 pr-[40px] rounded-2xl'>Family Information</label> <label className='text-black font-bold text-sm bg-[#adcdea] px-2 pr-[40px] rounded-2xl ml-[340px]'>Licensing Ability</label><br />
-                        <div className='grid grid-cols-2 lg:grid-cols-5 ml-2 lg:ml-0'>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Husband/Wife's Phone No</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Father/Brother/Sister's Phone No</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>BNMC Reg. No(if any)</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />                        </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>BNMC Reg. Year</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>District</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                        </div>
-                    </div>
-                    {/* educational information  */}
-                    <div>
-                        <label className='text-black font-bold text-sm bg-[#adcdea] px-2 pr-[40px] rounded-2xl'>Educational Information</label><br />
-                        <div className='educational-info-table w-[800px] mt-2'>
-                            <table className='w-full text-xl text-center'>
-                                <tr>
-                                    <th>Exam Name</th>
-                                    <th>Passing Year</th>
-                                    <th>Institution's Name</th>
-                                </tr>
-                                <tr>
-                                    <td><input className='w-full outline-none px-2' type='text' /></td>
-                                    <td><input className='w-full outline-none px-2' type='text' /></td>
-                                    <td><input className='w-full outline-none px-2' type='text' /></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    {/* nominee information */}
-                    <div>
-                        <label className='text-black font-bold text-sm bg-[#adcdea] px-2 pr-[40px] rounded-2xl'>Nominee Information</label><br />
-                        <div className='grid grid-cols-2 lg:grid-cols-5 ml-2 lg:ml-0'>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Nominee <span className='text-secondary font-bold'>01</span>-Name</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Nominee <span className='text-secondary font-bold'>01</span>-Relationship</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Nominee <span className='text-secondary font-bold'>01</span>-Distribution %</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                        </div>
-
-                        <div className='grid grid-cols-2 lg:grid-cols-5 ml-2 lg:ml-0'>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Nominee <span className='text-secondary font-bold'>02</span>-Name</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Nominee <span className='text-secondary font-bold'>02</span>-Relationship</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                            <div>
-                                <label className='text-black font-semibold text-sm'>Nominee <span className='text-secondary font-bold'>02</span>-Distribution %</label><br />
-                                <input type='text' className='w-[250px] h-[25px] p-2 border-2 border-black rounded' required />
-                            </div>
-                        </div>
-                    </div>
-                    <input type='submit' value='Submit' className='bg-secondary text-white py-2 px-4 cursor-pointer ml-[250px] lg:ml-[650px] mt-3 text-2xl rounded'/>
+                    {step === 1 && <PersonalInformation onNext={handleNext}></PersonalInformation>}
+                    {step === 2 && <JobDescription onNext={handleNext}></JobDescription>}
+                    {step === 3 && <Address onNext={handleNext}></Address>}
+                    {step === 4 && <OthersInfo onNext={handleNext}></OthersInfo>}
+                    {step === 5 && <NomineeInformation onNext={handleNext}></NomineeInformation>}
+                    {/* <input type='submit' value={step === 5 ? 'Submit' : 'Next'} onClick={() => setStep(step + 1)} className='bg-secondary text-white py-1 px-8 cursor-pointer mt-10 text-2xl block mx-auto rounded hover:bg-accent hover:text-black'/> */}
                 </form>
+
             </div>
             <Footer></Footer>
         </div>

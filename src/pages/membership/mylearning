@@ -1,0 +1,106 @@
+// // src/components/MultiStepForm.js
+// import React, { useState } from 'react';
+// import Step1 from './Step1';
+// import Step2 from './Step2';
+// import Step3 from './Step3';
+
+// const MultiStepForm = () => {
+//   const [step, setStep] = useState(1);
+//   const [formData, setFormData] = useState({
+//     // Initialize with empty values for each form field
+//     field1: '',
+//     field2: '',
+//     field3: '',
+//     // ... other fields
+//   });
+
+//   const handleNext = () => {
+//     setStep(step + 1);
+//   };
+
+//   const handlePrev = () => {
+//     setStep(step - 1);
+//   };
+
+//   const handleInputChange = (fieldName, value) => {
+//     setFormData({ ...formData, [fieldName]: value });
+//   };
+
+//   return (
+//     <div>
+//       {step === 1 && (
+//         <Step1
+//           onNext={handleNext}
+//           onInputChange={(fieldName, value) =>
+//             handleInputChange(fieldName, value)
+//           }
+//         />
+//       )}
+//       {step === 2 && (
+//         <Step2
+//           onNext={handleNext}
+//           onPrev={handlePrev}
+//           onInputChange={(fieldName, value) =>
+//             handleInputChange(fieldName, value)
+//           }
+//         />
+//       )}
+//       {step === 3 && (
+//         <Step3
+//           onPrev={handlePrev}
+//           formData={formData}
+//         />
+//       )}
+//     </div>
+//   );
+// };
+
+// export default MultiStepForm;
+
+
+
+// // src/components/Step1.js
+// import React from 'react';
+
+// const Step1 = ({ onNext, onInputChange }) => {
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     onInputChange(name, value);
+//   };
+
+//   return (
+//     <div>
+//       <h2>Step 1</h2>
+//       <input
+//         type="text"
+//         name="field1"
+//         placeholder="Field 1"
+//         onChange={handleChange}
+//       />
+//       {/* ... other form fields */}
+//       <button onClick={onNext}>Next</button>
+//     </div>
+//   );
+// };
+
+// export default Step1;
+
+// // Step2.js and Step3.js will be similar, just with different field names.
+
+
+// // src/components/Step3.js
+// import React from 'react';
+
+// const Step3 = ({ onPrev, formData }) => {
+//   return (
+//     <div>
+//       <h2>Step 3</h2>
+//       <p>Field 1: {formData.field1}</p>
+//       <p>Field 2: {formData.field2}</p>
+//       {/* ... display other form fields */}
+//       <button onClick={onPrev}>Previous</button>
+//     </div>
+//   );
+// };
+
+// export default Step3;
