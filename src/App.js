@@ -12,6 +12,10 @@ import ApplyForMembership from './pages/membership/ApplyForMembership';
 import Login from './pages/authentication/Login';
 import Registration from './pages/authentication/Registration';
 import NotFound from './pages/not-found/NotFound';
+import JobCircular from './pages/get-in-touch/JobCircular';
+import CSR from './pages/get-in-touch/CSR';
+import Notice from './pages/get-in-touch/Notice';
+import ContactUs from './pages/get-in-touch/ContactUs';
 
 function App() {
   return (
@@ -25,6 +29,10 @@ function App() {
         <Route path='/news' element={<News></News>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/get-in-touch' element={<GetInTouch></GetInTouch>}></Route>
+        <Route path='/job-circular' element={<JobCircular></JobCircular>}></Route>
+        <Route path='/notice' element={<Notice></Notice>}></Route>
+        <Route path='/csr' element={<CSR></CSR>}></Route>
+        <Route path='/contact-us' element={<ContactUs></ContactUs>}></Route>
         <Route path='/apply-membership' element={<ApplyForMembership></ApplyForMembership>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/registration' element={<Registration></Registration>}></Route>

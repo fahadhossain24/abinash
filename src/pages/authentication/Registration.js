@@ -10,7 +10,7 @@ const Registration = ({ setMenuHover }) => {
             <Header></Header>
             
             <div className='w-[400px] lg:w-[500px] h-[500px] lg:h-[540px] mx-auto mt-5'>
-            <label className='text-black border-2 border-secondary border-solid font-bold text-3xl bg-gradient-to-br text-transparent bg-clip-text from-blue-800 via-blue-800 to-blue-300 px-3 rounded-lg lg:ml-[150px] w-32 h-32 bg-gray-300 shadow-xl'>Create Account</label>
+            <div className='text-black border-2 border-secondary border-solid font-bold text-3xl bg-gradient-to-br text-transparent bg-clip-text from-blue-800 via-blue-800 to-blue-300 px-3 rounded-lg lg:ml-[150px] w-[50%] h-[9%] bg-gray-300 shadow-xl'>Create Account</div>
                 <div>
                     <div className='mt-5'>
                         <label className='text-black font-semibold text-lg'>Name <span className='text-red-600'>*</span></label><br />

@@ -81,12 +81,12 @@ const Header = ({ myStyle }) => {
                     </span>
                     
                     <span className='relative menu-item'>
-                        <Link to='/about'>Get In Touch <FontAwesomeIcon icon={faCaretDown} /></Link>
+                        <Link to='/get-in-touch'>Get In Touch <FontAwesomeIcon icon={faCaretDown} /></Link>
                         <div className='dropdown-content dropdownMenu rounded-xl w-[144px]'>
-                            <p><img src={img1} alt='FTML'/><Link to='/dps'>Job Circular</Link></p>
-                            <p><img src={img2} alt='FINCA'/><Link to='/fda'>Notice</Link></p>
-                            <p><img src={img3} alt='ISL'/><Link to='/financial-consultation'>CSR</Link></p>
-                            <p><img src={img4} alt='ISL'/><Link to='/financial-consultation'>Contact Us</Link></p>
+                            <p><img src={img1} alt='FTML'/><Link to='/job-circular'>Job Circular</Link></p>
+                            <p><img src={img2} alt='FINCA'/><Link to='/notice'>Notice</Link></p>
+                            <p><img src={img3} alt='ISL'/><Link to='/csr'>CSR</Link></p>
+                            <p><img src={img4} alt='ISL'/><Link to='/contact-us'>Contact Us</Link></p>
                         </div>
                     </span>
                     
